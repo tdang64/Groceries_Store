@@ -1,14 +1,14 @@
-﻿using Amazon.DynamoDBv2.DataModel;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Group4_Project.Models
 {
-    [DynamoDBTable("Category")]
+    [Table("Categories")]
     public class Category
     {
-        [DynamoDBHashKey]
-        public string CategoryId { get; set; } = Guid.NewGuid().ToString();
+        [Key]
+        public int Id { get; set; }   
 
-        [DynamoDBProperty]
         public string Name { get; set; } = string.Empty;
     }
 }

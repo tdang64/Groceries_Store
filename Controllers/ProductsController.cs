@@ -27,37 +27,38 @@ namespace Group4_Project.Controllers
             return Ok(_mapper.Map<IEnumerable<ProductReadDTO>>(items));
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(string id)
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetById(int id)
         {
             var item = await _repository.GetByIdAsync(id);
             if (item == null) return NotFound();
             return Ok(_mapper.Map<ProductReadDTO>(item));
         }
-
         [HttpPost]
         public async Task<IActionResult> Create(ProductCreateDTO dto)
         {
             var model = _mapper.Map<Product>(dto);
             await _repository.AddAsync(model);
 
-            return CreatedAtAction(nameof(GetById), new { id = model.ProductId },
+            return CreatedAtAction(nameof(GetById), new { id = model.Id },
                 _mapper.Map<ProductReadDTO>(model));
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Update(string id, ProductUpdateDTO dto)
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> Update(int id, ProductUpdateDTO dto)
         {
             var existing = await _repository.GetByIdAsync(id);
             if (existing == null) return NotFound();
 
             _mapper.Map(dto, existing);
-
             await _repository.UpdateAsync(existing);
+
             return NoContent();
         }
-        [HttpPatch("{id}")]
-        public async Task<IActionResult> PatchProduct(string id, [FromBody] JsonPatchDocument<Product> patchDoc)
+
+
+        [HttpPatch("{id:int}")]
+        public async Task<IActionResult> PatchProduct(int id, [FromBody] JsonPatchDocument<Product> patchDoc)
         {
             if (patchDoc == null)
                 return BadRequest();
@@ -76,14 +77,13 @@ namespace Group4_Project.Controllers
             return Ok(product);
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(string id)
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> Delete(int id)
         {
             var existing = await _repository.GetByIdAsync(id);
             if (existing == null) return NotFound();
 
             await _repository.DeleteAsync(id);
-
             return NoContent();
         }
     }

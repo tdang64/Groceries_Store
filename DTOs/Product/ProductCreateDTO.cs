@@ -6,7 +6,7 @@
         public decimal Price { get; set; }
         public int Stock { get; set; }
 
-        public string CategoryId { get; set; } = string.Empty;
-        public string SupplierId { get; set; } = string.Empty;
+        public int CategoryId { get; set; }
+        public int SupplierId { get; set; }
     }
 }

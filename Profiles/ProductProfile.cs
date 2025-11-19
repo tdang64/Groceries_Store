@@ -1,16 +1,18 @@
 ﻿using AutoMapper;
-using Group4_Project.DTOs;
 using Group4_Project.Models;
+using Group4_Project.DTOs;
 
-namespace Group4_Project.Profiles
+public class ProductProfile : Profile
 {
-    public class ProductProfile : Profile
+    public ProductProfile()
     {
-        public ProductProfile()
-        {
-            CreateMap<Product, ProductReadDTO>();
-            CreateMap<ProductCreateDTO, Product>();
-            CreateMap<ProductUpdateDTO, Product>();
-        }
+ 
+        CreateMap<Product, ProductReadDTO>();
+
+       
+        CreateMap<ProductCreateDTO, Product>();
+
+       
+        CreateMap<ProductUpdateDTO, Product>();
     }
 }

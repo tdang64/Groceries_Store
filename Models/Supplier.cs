@@ -1,17 +1,17 @@
-﻿using Amazon.DynamoDBv2.DataModel;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Group4_Project.Models
 {
-    [DynamoDBTable("Supplier")]
+    [Table("Suppliers")]
     public class Supplier
     {
-        [DynamoDBHashKey]
-        public string SupplierId { get; set; } = Guid.NewGuid().ToString();
+        [Key]
+        public int Id { get; set; }     
 
-        [DynamoDBProperty]
         public string Name { get; set; } = string.Empty;
-
-        [DynamoDBProperty]
-        public string Contact { get; set; } = string.Empty;
+        public string ContactEmail { get; set; } = string.Empty;
+        public string Phone { get; set; } = string.Empty;
+        public string Address { get; set; } = string.Empty;
     }
 }

@@ -1,26 +1,21 @@
-﻿using Amazon.DynamoDBv2.DataModel;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Group4_Project.Models
+[Table("Products")]
+public class Product
 {
-    [DynamoDBTable("Product")]
-    public class Product
-    {
-        [DynamoDBHashKey]
-        public string ProductId { get; set; } = Guid.NewGuid().ToString();
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int Id  { get; set; }
 
-        [DynamoDBProperty]
-        public string Name { get; set; } = string.Empty;
+    public int? CategoryId { get; set; }
 
-        [DynamoDBProperty]
-        public decimal Price { get; set; }
+    [Required]
+    [MaxLength(255)]
+    public string? Name { get; set; } = string.Empty;
 
-        [DynamoDBProperty]
-        public int Stock { get; set; }
+    [Column(TypeName = "decimal(18,2)")]
+    public decimal? Price { get; set; }
 
-        [DynamoDBProperty]
-        public string CategoryId { get; set; } = string.Empty;
-
-        [DynamoDBProperty]
-        public string SupplierId { get; set; } = string.Empty;
-    }
+    public string? Description { get; set; } = string.Empty;
 }

@@ -27,8 +27,8 @@ namespace Group4_Project.Controllers
             return Ok(_mapper.Map<IEnumerable<SupplierReadDTO>>(items));
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(string id)
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetById(int id)
         {
             var item = await _repository.GetByIdAsync(id);
             if (item == null) return NotFound();
@@ -41,47 +41,44 @@ namespace Group4_Project.Controllers
             var model = _mapper.Map<Supplier>(dto);
             await _repository.AddAsync(model);
 
-            return CreatedAtAction(nameof(GetById), new { id = model.SupplierId },
+            return CreatedAtAction(nameof(GetById), new { id = model.Id },
                 _mapper.Map<SupplierReadDTO>(model));
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Update(string id, SupplierUpdateDTO dto)
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> Update(int id, SupplierUpdateDTO dto)
         {
             var existing = await _repository.GetByIdAsync(id);
             if (existing == null) return NotFound();
 
             _mapper.Map(dto, existing);
-
             await _repository.UpdateAsync(existing);
+
             return NoContent();
         }
-        [HttpPatch("{id}")]
-        public async Task<IActionResult> PatchSupplier(string id, [FromBody] JsonPatchDocument<Supplier> patchDoc)
+
+
+        [HttpPatch("{id:int}")]
+        public async Task<IActionResult> PatchSupplier(int id, [FromBody] JsonPatchDocument<Supplier> patchDoc)
         {
             if (patchDoc == null)
                 return BadRequest();
 
-        
             var supplier = await _repository.GetByIdAsync(id);
             if (supplier == null)
                 return NotFound();
 
-       
             patchDoc.ApplyTo(supplier, ModelState);
-
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
- 
             await _repository.UpdateAsync(supplier);
 
-            return Ok(supplier);
+            return Ok(_mapper.Map<SupplierReadDTO>(supplier));
         }
 
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(string id)
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> Delete(int id)
         {
             var existing = await _repository.GetByIdAsync(id);
             if (existing == null) return NotFound();

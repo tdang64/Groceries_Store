@@ -1,16 +1,19 @@
 ﻿using AutoMapper;
-using Group4_Project.DTOs;
 using Group4_Project.Models;
+using Group4_Project.DTOs;
 
-namespace Group4_Project.Profiles
+public class CategoryProfile : Profile
 {
-    public class CategoryProfile : Profile
+    public CategoryProfile()
     {
-        public CategoryProfile()
-        {
-            CreateMap<Category, CategoryReadDTO>();
-            CreateMap<CategoryCreateDTO, Category>();
-            CreateMap<CategoryUpdateDTO, Category>();
-        }
+    
+        CreateMap<Category, CategoryReadDTO>()
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id));
+
+       
+        CreateMap<CategoryCreateDTO, Category>();
+
+      
+        CreateMap<CategoryUpdateDTO, Category>();
     }
 }

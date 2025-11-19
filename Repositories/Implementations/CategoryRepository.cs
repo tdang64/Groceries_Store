@@ -1,42 +1,49 @@
-﻿using Amazon.DynamoDBv2.DataModel;
+﻿using Group4_Project.Data;
 using Group4_Project.Models;
 using Group4_Project.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Group4_Project.Repository.Implementations
 {
     public class CategoryRepository : ICategoryRepository
     {
-        private readonly IDynamoDBContext _context;
+        private readonly GroceryDbContext _context;
 
-        public CategoryRepository(IDynamoDBContext context)
+        public CategoryRepository(GroceryDbContext context)
         {
             _context = context;
         }
 
         public async Task<IEnumerable<Category>> GetAllAsync()
         {
-            var scan = _context.ScanAsync<Category>(new List<ScanCondition>());
-            return await scan.GetNextSetAsync();
+            return await _context.Categories.ToListAsync();
         }
 
-        public async Task<Category?> GetByIdAsync(string id)
+        public async Task<Category?> GetByIdAsync(int id)
         {
-            return await _context.LoadAsync<Category>(id);
+            return await _context.Categories.FindAsync(id);
         }
 
         public async Task AddAsync(Category category)
         {
-            await _context.SaveAsync(category);
+            _context.Categories.Add(category);
+            await _context.SaveChangesAsync();
         }
 
         public async Task UpdateAsync(Category category)
         {
-            await _context.SaveAsync(category);
+            _context.Categories.Update(category);
+            await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(string id)
+        public async Task DeleteAsync(int id)
         {
-            await _context.DeleteAsync<Category>(id);
+            var item = await _context.Categories.FindAsync(id);
+            if (item != null)
+            {
+                _context.Categories.Remove(item);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }

@@ -1,16 +1,16 @@
 ﻿using AutoMapper;
-using Group4_Project.DTOs;
 using Group4_Project.Models;
+using Group4_Project.DTOs;
 
-namespace Group4_Project.Profiles
+public class SupplierProfile : Profile
 {
-    public class SupplierProfile : Profile
+    public SupplierProfile()
     {
-        public SupplierProfile()
-        {
-            CreateMap<Supplier, SupplierReadDTO>();
-            CreateMap<SupplierCreateDTO, Supplier>();
-            CreateMap<SupplierUpdateDTO, Supplier>();
-        }
+        CreateMap<Supplier, SupplierReadDTO>()
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id));
+
+        CreateMap<SupplierCreateDTO, Supplier>();
+
+        CreateMap<SupplierUpdateDTO, Supplier>();
     }
 }
