@@ -1,0 +1,128 @@
+﻿.logo-text {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: #005BAA; /* Superstore Blue */
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+.search-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.search-input {
+    width: 300px;
+    padding: 10px 15px;
+    border: 2px solid #005BAA;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.search-button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    background-color: #FF4B2A;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #d63c1f;
+}
+
+
+/* HERO SECTION */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 50px;
+    background-color: #EDEDED;
+    border-bottom: 1px solid #eee;
+}
+
+.hero-text {
+    max-width: 600px;
+}
+
+    .hero-text h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #333333; /* dark neutral text */
+    }
+
+    .hero-text p {
+        color: #555; /* leaving this as-is because it's already neutral */
+        margin-bottom: 30px;
+        font-size: 1.2rem;
+    }
+
+.shop-btn {
+    padding: 12px 30px;
+    background-color: #FF4B2A; /* superstore red/orange */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+    .shop-btn:hover {
+        background-color: #E2431D; /* darker red hover */
+    }
+
+.hero-image img {
+    width: 500px;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* FEATURED CATEGORIES SECTION */
+.featured-categories {
+    padding: 60px 40px;
+    text-align: center;
+}
+
+    .featured-categories h2 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 40px;
+        color: #333333; /* dark neutral */
+    }
+
+.category-cards {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.category-card {
+    padding: 30px;
+    background-color: #E9F2FB; /* soft superstore blue tint */
+    border-radius: 10px;
+    width: 200px;
+    text-align: center;
+}
+
+    .category-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        color: #005BAA; /* superstore blue */
+    }
+
+.shop-now {
+    text-decoration: none;
+    color: #005BAA; /* superstore blue */
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.category-card:hover {
+    background-color: #D4E6F7; /* slightly darker blue hover */
+    cursor: pointer;
+}

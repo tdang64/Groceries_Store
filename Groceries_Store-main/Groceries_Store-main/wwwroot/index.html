@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FoodMart - Grocery Browser</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search for products...">
+        <button id="searchBtn">Search</button>
+    </div>
+
+
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-text">
+            <div class="logo-text">FoodMart</div>
+            <h1>Browse for Fresh Groceries</h1>
+            <p>Fresh groceries, pantry essentials, and more!</p>
+            <a href="/templates/categories.html"><button class="shop-btn">Browse Categories</button></a>
+        </div>
+
+        <div class="hero-image">
+            <img src="/img/indeximg.jpg" alt="Fresh Groceries">
+        </div>
+    </section>
+
+    <!-- FEATURED CATEGORIES SECTION -->
+    <section class="featured-categories">
+        <h2>Browse by Category</h2>
+        <div class="category-cards">
+            <div class="category-card">
+                <h3>Bakery & Desserts</h3>
+                <a href="/templates/products.html?categoryId=1&categoryName=Bakery%20%26%20Desserts" class="shop-now">View Item →</a>>
+            </div>
+            <div class="category-card">
+                <h3>Meat & Seafood</h3>
+                <a href="/templates/products.html?categoryId=13&categoryName=Meat%20%26%20Seafood" class="shop-now">View Items →</a>
+            </div>
+            <div class="category-card">
+                <h3>Snacks</h3>
+                <a href="/templates/products.html?categoryId=19&categoryName=Snacks" class="shop-now">View Items →</a>
+            </div>
+            <div class="category-card">
+                <h3>Coffee</h3>
+                <a href="/templates/products.html?categoryId=6&categoryName=Coffee" class="shop-now">View Items →</a>
+            </div>
+        </div>
+    </section>
+    <script src="/js/search.js"></script>
+
+</body>
+
+</html>

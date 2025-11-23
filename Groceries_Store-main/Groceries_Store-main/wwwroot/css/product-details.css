@@ -1,0 +1,45 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    /* Superstore-style gradient (BLUE → WHITE) */
+    background: linear-gradient(to bottom, #005BAA 0%, #ffffff 80%);
+    min-height: 100vh;
+}
+
+
+header {
+    margin-bottom: 20px;
+}
+
+.back-btn, .home-btn {
+    margin-right: 15px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: #ffffff;
+}
+
+.details-container {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    max-width: 700px;
+    margin: auto;
+}
+
+#product-name {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.price {
+    font-size: 1.3rem;
+    color: #005baa;
+    margin-bottom: 15px;
+}
+
+.description {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.4;
+}
